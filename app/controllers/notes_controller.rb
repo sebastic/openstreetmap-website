@@ -53,6 +53,8 @@ class NotesController < ApplicationController
   ##
   # Create a new note
   def create
+    assert_method :post
+
     # Check the arguments are sane
     raise OSM::APIBadUserInput.new("No lat was given") unless params[:lat]
     raise OSM::APIBadUserInput.new("No lon was given") unless params[:lon]
@@ -86,6 +88,8 @@ class NotesController < ApplicationController
   ##
   # Add a comment to an existing note
   def comment
+    assert_method :post
+
     # Check the arguments are sane
     raise OSM::APIBadUserInput.new("No id was given") unless params[:id]
     raise OSM::APIBadUserInput.new("No text was given") if params[:text].blank?
@@ -115,6 +119,8 @@ class NotesController < ApplicationController
   ##
   # Close a note
   def close
+    assert_method :post
+
     # Check the arguments are sane
     raise OSM::APIBadUserInput.new("No id was given") unless params[:id]
 
@@ -145,6 +151,8 @@ class NotesController < ApplicationController
   ##
   # Reopen a note
   def reopen
+    assert_method :post
+
     # Check the arguments are sane
     raise OSM::APIBadUserInput.new("No id was given") unless params[:id]
 
@@ -220,6 +228,8 @@ class NotesController < ApplicationController
   ##
   # Delete (hide) a note
   def destroy
+    assert_method :post
+
     # Check the arguments are sane
     raise OSM::APIBadUserInput.new("No id was given") unless params[:id]
 
